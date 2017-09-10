@@ -3,16 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CA.Data.Entities
 {
-    public class FuelType
+    public class FuelType : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         /// <summary>
         /// Name of fuel.
         /// </summary>
-        [Required]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(24)]
         public string Name { get; set; }
+
 
         //Navigation properties
 
