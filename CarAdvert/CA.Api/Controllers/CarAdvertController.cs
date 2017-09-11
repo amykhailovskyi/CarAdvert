@@ -23,7 +23,7 @@ namespace CA.Api.Controllers
         {
             try
             {
-                return Ok(await _service.GetAll());
+                return Json(await _service.GetAll());
             }
             catch (Exception e)
             {
@@ -31,12 +31,12 @@ namespace CA.Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
             try
             {
-                return Ok(await _service.GetById(id));
+                return Json(await _service.GetById(id));
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@ namespace CA.Api.Controllers
         {
             try
             {
-                return Ok(await _service.Add(value));
+                return Json(await _service.Add(value));
             }
             catch (Exception e)
             {
@@ -57,7 +57,7 @@ namespace CA.Api.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Put(int id, [FromBody]CarAdvertDto value)
         {
             try
@@ -72,7 +72,7 @@ namespace CA.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             try

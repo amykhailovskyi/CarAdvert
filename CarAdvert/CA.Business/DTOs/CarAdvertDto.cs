@@ -1,5 +1,7 @@
 ﻿using System;
+using CA.Business.Misc;
 using FluentValidation;
+using Newtonsoft.Json;
 
 namespace CA.Business.DTOs
 {
@@ -35,10 +37,8 @@ namespace CA.Business.DTOs
         /// <summary>
         /// Date of the first registration. For used car.
         /// </summary>
+        [JsonConverter(typeof(OnlyDateConverter))]
         public DateTime? FirstRegistration { get; set; }
-
-
-        public string Fuel { get; set; }
     }
 
     public class CarAdvertDtoValidator : AbstractValidator<CarAdvertDto>
