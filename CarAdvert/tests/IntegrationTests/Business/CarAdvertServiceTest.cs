@@ -21,7 +21,7 @@ namespace IntegrationTests.Business
         }
 
         [Fact]
-        public async Task Test1()
+        public async Task CreateNewCarAdvertShouldBeSuccess()
         {
             var expected = GetCarAdvertDto();
 
@@ -29,7 +29,26 @@ namespace IntegrationTests.Business
             var obj = await _advertService.GetById(id);
 
             Assert.NotNull(obj);
+            AssertEquals(expected, obj);
+        }
+
+        [Fact]
+        public async Task CreateUsedCarAdvertShouldBeThrowException()
+        {
+            var expected = GetCarAdvertDto();
+            expected.New = false;
+
+            await Assert.ThrowsAsync<ArgumentException>(() => _advertService.Add(expected));
+        }
+
+        private void AssertEquals(CarAdvertDto expected, CarAdvertDto obj)
+        {
             Assert.Equal(expected.Price, obj.Price);
+            Assert.Equal(expected.Mileage, obj.Mileage);
+            Assert.Equal(expected.Title, obj.Title);
+            Assert.Equal(expected.FuelTypeId, obj.FuelTypeId);
+            Assert.Equal(expected.New, obj.New);
+            Assert.Equal(expected.FirstRegistration, obj.FirstRegistration);
         }
 
         private CarAdvertDto GetCarAdvertDto()
