@@ -26,7 +26,7 @@ namespace CA.Data.Repositories
         {
             return await _entities.FirstOrDefaultAsync(s => s.Id == id);
         }
-        public async Task InsertAsync(T entity)
+        public async Task<int> InsertAsync(T entity)
         {
             if (entity == null)
             {
@@ -35,6 +35,8 @@ namespace CA.Data.Repositories
 
             await _entities.AddAsync(entity);
             await _context.SaveChangesAsync();
+
+            return entity.Id;
         }
         public async Task UpdateAsync(T entity)
         {

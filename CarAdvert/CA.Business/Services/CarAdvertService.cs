@@ -34,12 +34,12 @@ namespace CA.Business.Services
             return Mapper.Map<CarAdvert, CarAdvertDto>(await _carAdvertRepository.GetAsync(id));
         }
 
-        public async Task Add(CarAdvertDto obj)
+        public async Task<int> Add(CarAdvertDto obj)
         {
             await _validator.ValidateAndThrowAsync(obj);
 
             CarAdvert entity = Mapper.Map<CarAdvertDto, CarAdvert>(obj);
-            await _carAdvertRepository.InsertAsync(entity);
+            return await _carAdvertRepository.InsertAsync(entity);
         }
 
         public async Task Update(CarAdvertDto obj)

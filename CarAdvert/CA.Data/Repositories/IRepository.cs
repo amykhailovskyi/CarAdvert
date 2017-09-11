@@ -9,7 +9,7 @@ namespace CA.Data.Repositories
         Task DeleteAsync(T entity);
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetAsync(int id);
-        Task InsertAsync(T entity);
+        Task<int> InsertAsync(T entity);
         Task UpdateAsync(T entity);
     }
 }

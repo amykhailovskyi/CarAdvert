@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="Moq" Version="4.7.99" />
+    <PackageReference Include="xunit" Version="2.3.0-beta5-build3769" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta5-build3769" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CA.Business\CA.Business.csproj" />
+    <ProjectReference Include="..\..\CA.Data\CA.Data.csproj" />
+  </ItemGroup>
+
+</Project>
