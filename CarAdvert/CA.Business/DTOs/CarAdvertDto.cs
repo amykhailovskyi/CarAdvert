@@ -48,12 +48,21 @@ namespace CA.Business.DTOs
             RuleFor(r => r.Title).NotEmpty().MaximumLength(64);
             RuleFor(r => r.FuelTypeId).NotEmpty();
             RuleFor(r => r.Price).GreaterThan(0);
-            RuleFor(r => r.Mileage).GreaterThan(0).When(r => r.New);
+            
             When(r => r.New, () =>
-                RuleFor(x => x.FirstRegistration).NotNull()
+            {
+                RuleFor(x => x.FirstRegistration).Null();
+                RuleFor(x => x.Mileage).Equal(0);
+            });
+
+            When(r => !r.New, () =>
+            {
+                RuleFor(x => x.FirstRegistration)
+                    .NotNull()
                     .GreaterThan(new DateTime(1950, 1, 1))
-                    .LessThanOrEqualTo(DateTime.Now)
-            );
+                    .LessThanOrEqualTo(DateTime.Now);
+                RuleFor(x => x.Mileage).GreaterThan(0);
+            });
         }
     }
 }
